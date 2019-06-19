@@ -1,24 +1,24 @@
 import React from 'react';
 import './App.css';
+import { friendsReducer } from './reducers/friendsReducer';
+import { connect } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom"
+import { Route } from "react-router-dom";
 
 function App() {
   return (
+    <Router>
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Route path="/login" component={Login}/>
     </div>
+    </Router>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+
+  }
+}
+export default connect(mapStateToProps, {})(App);
