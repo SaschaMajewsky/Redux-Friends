@@ -46,11 +46,38 @@ export const friendsReducer = (state = initialState, action) => {
                 error: action.payload
             };
         case FRIENDS_FETCHING:
-            return "";
+            return {
+                ...state,
+                deletingFriend: false,
+                fetchingFriends: true,
+                friends: [],
+                loggingIn: false,
+                savingFriends: false,
+                updatingFriend: false,
+                error: null
+                };
         case FRIENDS_FETCHING_SUCCESS:
-            return "";
+            return {
+                ...state,
+                deletingFriend: false,
+                fetchingFriends: false,
+                friends: action.payload,
+                loggingIn: false,
+                savingFriends: false,
+                updatingFriend: false,
+                error: null
+                };
         case FRIENDS_FETCHING_FAILURE:
-            return "";   
+            return {
+                ...state,
+                deletingFriend: false,
+                fetchingFriends: false,
+                friends: [],
+                loggingIn: false,
+                savingFriends: false,
+                updatingFriend: false,
+                error: action.payload
+                };  
         default:
             return state;
     }

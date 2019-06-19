@@ -13,15 +13,20 @@ export const login = accountData => dispatch => {
     dispatch({ type: LOGIN_FETCHING });
     axios.post("http://localhost:5000/api/login", accountData)
     .then(response => {
-        dispatch({ type: LOGIN_FETCHING, payload: response.data })
+        localStorage.setItem("api_token", response.data.payload);
+        dispatch({ type: LOGIN_SUCCESS, payload: response.data })
+        fetchFriends(dispatch)
     })
     .catch(error => {
         dispatch({ type: LOGIN_FAILURE, payload: "Your account information are not recognized. Please check or contact the support team." })
     })
 }
 
-/* export const fetchFriends = () => dispatch => {
-    dispatch({ type: FETCHING });
-    axios.get("http://localhost:5000/api/friends")
-    .then
-} */
+export const fetchFriends = dispatch => {
+    dispatch({ type: FRIENDS_FETCHING });
+    return axios.get("http://localhost:5000/api/friends", { headers: { authorization: localStorage.getItem("api_token")}})
+    .then(response => {
+        dispatch({ type: FRIENDS_FETCHING_SUCCESS, payload: response.data })
+    })
+    .catch(error => dispatch({ type: FRIENDS_FETCHING_FAILURE, payload: "Well, this did not went right. Please try again!"}))
+}
