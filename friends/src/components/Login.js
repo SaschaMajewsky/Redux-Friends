@@ -19,18 +19,20 @@ class Login extends React.Component {
     }
 
     handleInput = event => {
-        this.setState({ username: { ...this.state.accountData, [event.target.name]: event.target.value }})
+        this.setState({ accountData: { ...this.state.accountData, [event.target.name]: event.target.value }})
     }
 
     render() {
         return(
             <div>
-                <form>
+                <form onSubmit={this.login}>
                     <label>Username:</label>
                     <input type="text" name="username" value={this.state.accountData.username} onChange={this.handleInput}/>
                     <br/>
                     <label>Password:</label>
                     <input type="text" name="password" value={this.state.accountData.password} onChange={this.handleInput}/>
+                    <br/>
+                    <button type="submit">Enter</button>
                 </form>
             </div>
         )
