@@ -4,6 +4,7 @@ import { friendsReducer } from './reducers/friendsReducer';
 import { connect } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom"
 import { Route } from "react-router-dom";
+import Login from "./components/Login"
 
 function App() {
   return (
@@ -17,8 +18,7 @@ function App() {
 
 const mapStateToProps = state => {
   console.log(state);
-  return {
-
-  }
+  return {}
 }
+
 export default connect(mapStateToProps, {})(App);
