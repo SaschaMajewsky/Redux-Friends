@@ -1,11 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { login } from "../actions";
+import { Redirect } from "react-router-dom";
 
 class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            error: props.error,
             accountData: {
                 username: "",
                 password: ""
@@ -16,13 +18,19 @@ class Login extends React.Component {
     login = event => {
         event.preventDefault();
         this.props.login(this.state.accountData)
-    }
+        .then(() => {
+            this.props.history.push("/");
+        });
+    };
 
     handleInput = event => {
         this.setState({ accountData: { ...this.state.accountData, [event.target.name]: event.target.value }})
     }
 
     render() {
+        if (localStorage.getItem("api_token")) {
+            return <Redirect to="/"/>
+        }
         return(
             <div>
                 <form onSubmit={this.login}>
@@ -40,7 +48,7 @@ class Login extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return {}
+    return { error: state.error }
 }
 
 export default connect(mapStateToProps, { login })(Login);
