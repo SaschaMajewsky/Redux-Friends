@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { fetchFriends } from "../actions";
+import FriendForm from "./FriendForm";
 
 class Protected extends React.Component {
 
@@ -13,6 +14,7 @@ class Protected extends React.Component {
             <>
             {this.props.fetchingFriends && <p>Calling all your friends house number right now. Dialing..</p>}
             {this.props.error && <p>{this.props.error}</p>}
+            <FriendForm />
             {this.props.friends.map(friend => (
                 <div>
                     <h2>{friend.name}</h2>
