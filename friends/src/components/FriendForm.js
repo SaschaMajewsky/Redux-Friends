@@ -1,6 +1,7 @@
 import React from "react";
 import { addFriend } from "../actions";
 import { connect } from "react-redux";
+import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBRow, MDBCol, MDBInput } from 'mdbreact';
 
 
 class FriendForm extends React.Component {
@@ -32,17 +33,14 @@ addFriend = event => {
     return (
       <>
         <br/>
-        <form onSubmit={this.addFriend}>
-        <label>Name:</label>
-        <input type="text" name="name" value={this.state.friend.name} onChange={this.handleInput} />
+        <form className="md-form" onSubmit={this.addFriend}>
+        <input className="white-text" placeholder="Name" type="text" name="name" id="nameInput" value={this.state.friend.name} onChange={this.handleInput} autoComplete="off"/>
         <br/>
-        <label>Age:</label>
-        <input type="text" name="age" value={this.state.friend.age} onChange={this.handleInput} />
+        <input className="white-text" placeholder="25" type="text" name="age" value={this.state.friend.age} onChange={this.handleInput} autoComplete="off"/>
         <br/>
-        <label>Email:</label>
-        <input type="text" name="email" value={this.state.friend.email} onChange={this.handleInput} />
+        <input className="white-text" placeholder="Email" type="text" name="email" value={this.state.friend.email} onChange={this.handleInput} className="form-control white-text" autoComplete="off" />
         <br/>
-        <button type="submit">Add Friend</button>
+        <button className="btn peach-gradient" type="submit">Add Friend</button>
         </form>
       </>
     );

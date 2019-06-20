@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { login } from "../actions";
 import { Redirect } from "react-router-dom";
+import 'mdbreact/dist/css/mdb.css' 
 
 class Login extends React.Component {
     constructor(props) {
@@ -40,7 +41,7 @@ class Login extends React.Component {
                     <label>Password:</label>
                     <input type="text" name="password" value={this.state.accountData.password} onChange={this.handleInput}/>
                     <br/>
-                    <button type="submit">Enter</button>
+                    <button className="btn peach-gradient" type="submit">Enter</button>
                 </form>
             </div>
         )

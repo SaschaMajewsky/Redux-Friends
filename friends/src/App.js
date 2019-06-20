@@ -7,6 +7,7 @@ import Login from "./components/Login"
 import PrivateRoute from "./components/PrivateRoute";
 import Protected from "./components/Protected";
 import { Link } from 'react-router-dom'
+import 'mdbreact/dist/css/mdb.css' 
 
 class App extends React.Component {
 
