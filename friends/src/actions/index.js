@@ -17,7 +17,6 @@ export const login = accountData => dispatch => {
     .then(response => {
         localStorage.setItem("api_token", response.data.payload);
         dispatch({ type: LOGIN_SUCCESS, payload: response.data })
-        /* fetchFriends(dispatch) */
     })
     .catch(error => {
         dispatch({ type: LOGIN_FAILURE, payload: "Your account information are not recognized. Please check or contact the support team." })

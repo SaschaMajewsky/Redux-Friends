@@ -36,9 +36,9 @@ addFriend = event => {
         <form className="md-form" onSubmit={this.addFriend}>
         <input className="white-text" placeholder="Name" type="text" name="name" id="nameInput" value={this.state.friend.name} onChange={this.handleInput} autoComplete="off"/>
         <br/>
-        <input className="white-text" placeholder="25" type="text" name="age" value={this.state.friend.age} onChange={this.handleInput} autoComplete="off"/>
+        <input className="white-text" placeholder="Age" type="number" name="age" value={this.state.friend.age} onChange={this.handleInput} autoComplete="off"/>
         <br/>
-        <input className="white-text" placeholder="Email" type="text" name="email" value={this.state.friend.email} onChange={this.handleInput} className="form-control white-text" autoComplete="off" />
+        <input className="white-text" placeholder="Email" type="email" name="email" value={this.state.friend.email} onChange={this.handleInput} className="form-control white-text" autoComplete="off" />
         <br/>
         <button className="btn peach-gradient" type="submit">Add Friend</button>
         </form>
